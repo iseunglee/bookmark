@@ -24,7 +24,7 @@ class Post(models.Model):
         return reverse('blog:post_detail', args=(self.slug,))
 
     def get_previous(self):
-        return self.get_previous_by_modify_dt()
+        return self.get_previous_by_modify_dt() # 날짜, 시간 필드와 관련되어서 자동으로 생성되는 함수를 사용
 
     def get_next(self):
-        return self.get_next_by_modify_dt()
+        return self.get_next_by_modify_dt() # get_previous_by_modify_dt와 마찬가지

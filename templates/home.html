@@ -1,1 +1,70 @@
-<h1>우리들의 블로그</h1>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}재밌는 장고 공부{% endblock %}
+
+{% block extra-style %}
+<style type="text/css">
+    .home-image {
+        background-image: url("{% static 'img/lion.jpg' %}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover; /* 배경 이미지가 div를 완전히 커버하도록 변경 */
+        height: 500px;
+        border-top: 5px solid #666; /* 상단 border를 더 얇게 조정 */
+        border-bottom: 5px solid #666; /* 하단 border를 더 얇게 조정 */
+        display: flex;
+        justify-content: center;
+        align-items: center; /* 세로 및 가로 중앙 정렬 */
+    }
+    .title {
+        color: #fff; /* 제목 색상 변경 */
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.5); /* 제목 배경에 어두운 반투명 효과 추가 */
+        padding: 10px 20px;
+        border-radius: 5px; /* 제목에 둥근 모서리 추가 */
+    }
+    .powered {
+        position: relative;
+        top: 77%;
+        color: #fff; /* 텍스트 색상 변경 */
+        font-style: italic;
+        background-color: rgba(0, 0, 0, 0.5); /* 텍스트 배경에 어두운 반투명 효과 추가 */
+        padding: 5px 10px;
+        border-radius: 5px; /* 텍스트에 둥근 모서리 추가 */
+    }
+    .row {
+        margin-top: 30px; /* 상단 여백 추가 */
+    }
+    .col-sm-6 {
+        padding: 20px; /* padding 추가로 내용물 간격 조정 */
+    }
+    h3 {
+        color: #007bff; /* 제목 색상 변경 */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="home-image">
+    <h2 class="title">Python Web Programming</h2>
+</div>
+
+<div class="container"> <!-- Bootstrap 컨테이너 추가로 콘텐츠 가운데 정렬 -->
+    <div class="row text-center">
+        <div class="col-sm-6">
+            <h3>Bookmark App</h3>
+            <p class="fw-light">
+                Bookmark is a Uniform Resource Identifier (URI) that is stored for later retrieval in any of various storage formats. You can store your own bookmarks by Bookmark application. It's also possible to update or delete your bookmarks.
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <h3>Blog App</h3>
+            <p>
+                This application makes it possible to log daily events or write your own interests such as hobbies, techniques, etc. A typical blog combines text, digital images, and links to other blogs, web pages, and other media related to its topic.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,10 @@
+{% extends 'base.html' %}
 
+{% load static %}
+
+{% block title %}Post All{% endblock %}
+
+{%block content%}
 <h1>Archive List {% now "Y m d" %}</h1>
 
 <ul>
@@ -12,13 +18,10 @@
 <div>
     <ul>
         {% for post in object_list %}
-        <li>{{post.modify_dt | date:"Y-m-d"}}
+        <li>{{post.modify_dt | date:"Y-m-d"}} 
             <a href="{{post.get_absolute_url}}">{{post.title}}</a>
         </li>
         {% endfor %}
     </ul>
 </div>
-
-{{date_list}}
-
-{{object_list}}
+{%endblock%}

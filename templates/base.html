@@ -37,7 +37,7 @@
                   <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a></li>
                   <li><a class="dropdown-item" href="{% url 'blog:post_archive' %}">Archive</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Search</a></li>
+                  <li><a class="dropdown-item" href="{% url 'blog:search' %}">Search</a></li>
                 </ul>
               </li>
             </ul>
@@ -62,7 +62,8 @@
       </div>
   </div>  
     {% endblock %}
-
+    <script src="https://kit.fontawesome.com/c998a172fe.js"></script> <!--태그 아이콘 추가-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {% block extra-script %}{% endblock %} <!--댓글 자리잡기-->
 </body>
 </html>

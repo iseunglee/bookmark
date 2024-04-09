@@ -24,4 +24,12 @@ urlpatterns = [
 
     # Example: /blog/archive/today/
     path('archive/today/', views.PostTAV.as_view(), name='post_today_archive'),
+
+    # 태그 관련 url
+    path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
+    path('tag/<str:tag>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
+
+    # 서치 기능
+    path('search/', views.SearchFormView.as_view(), name='search'),
+    
 ]

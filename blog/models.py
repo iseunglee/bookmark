@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager # 태그 추가
 # Create your models here.
 # id, title, slug, description, content, create_df, modify_df
 
@@ -10,6 +11,7 @@ class Post(models.Model):
     content = models.TextField('CONTENT')
     create_dt = models.DateTimeField('CREATE DATE', auto_now_add=True)
     modify_dt = models.DateTimeField('MODIFY DATE', auto_now=True)
+    tags = TaggableManager(blank=True) # 태그 추가
 
     class Meta:
         verbose_name = 'post'
@@ -28,3 +30,12 @@ class Post(models.Model):
 
     def get_next(self):
         return self.get_next_by_modify_dt() # get_previous_by_modify_dt와 마찬가지
+'''
+# 댓글 관련 테이블
+# Question, Choice 구조와 같다.
+class Comment(models.Model):
+    # user
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=200)
+    # date ...
+'''

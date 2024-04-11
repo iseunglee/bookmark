@@ -12,5 +12,7 @@ class PostAdmin(admin.ModelAdmin):
     # 태그 기능을 위한 추가
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('tags')
+    
     def tag_list(self, obj):
         return ', '.join(o.name for o in obj.tags.all())
+    

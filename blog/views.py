@@ -78,7 +78,8 @@ class TaggedObjectLV(ListView):
     context = {
         post_list : ... ,
         tagname : ... , 
-        # context 변수에 기본적으로 추가되는 post_list를 제외하고 다른 내용을 추가하기 위해 상단의 get_context_date()메서드를 통해 추가한다.
+        # context 변수에 기본적으로 추가되는 post_list를 제외하고 다른 내용을 추가하기 위해 
+        # 상단의 get_context_date()메서드를 통해 추가한다.
     }
     '''
 
@@ -95,7 +96,9 @@ class SearchFormView(FormView):
         # 검색어 확인
         searchWord = form.cleaned_data['search_word']
         # Q를 통해 검색하고
-        post_list = Post.objects.filter(Q(title__icontains=searchWord) | Q(description__icontains=searchWord) | Q(content__icontains=searchWord)).distinct()
+        post_list = Post.objects.filter(Q(title__icontains=searchWord) | 
+                                        Q(description__icontains=searchWord) | 
+                                        Q(content__icontains=searchWord)).distinct()
         # 결과를 담아
         context = {}
         context['form'] = form

@@ -1,14 +1,24 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DeleteView, ArchiveIndexView,  YearArchiveView, MonthArchiveView, DayArchiveView, TodayArchiveView, TemplateView
 from .models import Post
 from django.conf import settings # disqus 내용을 위한 라이브러리 추가
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 # Create your views here.
-class PostLV(ListView):
+class PostLV(LoginRequiredMixin, ListView):
+    # login_url에 대한 주소를 지정
+    # login_url = '/accounts/login/'
     model = Post
-    template_name = 'blog/post_all.html' # 디폴트로 생성되는 이름을 사용하지 않고, 사용할 이름을 정하겠다
+    template_name = 'blog/post_all.html' # 디폴트로 생성되는 이름을 사용하지 않고, 사용할 이름을 정함
     context_object_name = 'posts'
     paginate_by = 1 # 페이지 생성을 위한 변수, 2개씩 1페이지 구성
-
+    
+    def get_queryset(self):
+        return self.model.objects.all()
+    
 '''
 제네릭 뷰를 사용하지 않을 시
 def dummy_post(request):
